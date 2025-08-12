@@ -19,7 +19,7 @@ jobs:
         uses: azure/login@v1
         with:
           client-id: fdebd097-6c93-4b43-a6bc-b2c0b4aae477
-          tenant-id: 67c62374-5b0c-4279-8bd4-509c4d106aa3
+          tenant-id: 67c62374-5b0c-4279-8bd4-509c4d106aa3 #1
           subscription-id: 6eea2e9b-71c6-49d4-b2be-85a440f23b97
           enable-oidc: true
 
