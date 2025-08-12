@@ -39,5 +39,3 @@ terraform.rc
 *.swo
 *~
 
-# Ignore any .terraform.lock.hcl file (optional - some prefer to commit this)
-.terraform.lock.hcl
