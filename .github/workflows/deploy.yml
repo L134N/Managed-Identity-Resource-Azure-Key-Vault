@@ -1,0 +1,39 @@
+name: Terraform Deploy with Azure OIDC
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure Login with OIDC
+        uses: azure/login@v1
+        with:
+          client-id: fdebd097-6c93-4b43-a6bc-b2c0b4aae477
+          tenant-id: 67c62374-5b0c-4279-8bd4-509c4d106aa3
+          subscription-id: 6eea2e9b-71c6-49d4-b2be-85a440f23b97
+          allow-no-subscriptions: true
+          use-oidc: true
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.5
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
